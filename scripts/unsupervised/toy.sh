@@ -1,0 +1,26 @@
+train_url=${0%%.sh}
+train_url=${train_url:21}
+python main_moco.py \
+--moxing=false \
+--train_url=../${train_url} \
+--data_dir=/home/xuhaohang/toy_imagenet/ \
+--moco_dim=128 \
+--moco_k=65536 \
+--moco_m=0.999 \
+--moco_t=0.2 \
+--mlp=true \
+--aug_plus=true \
+--decay_method=cos \
+--init_lr=0.03 \
+--batch_size=2 \
+--num_workers=2 \
+--end_epoch=200 \
+--dist=true \
+--nodes_num=1 \
+--node_rank=0 \
+--subgroup=1 \
+--master_addr=127.0.0.1 \
+--lam=0.6,0.4 \
+--report_freq=10 \
+--cluster_freq=5 \
+# --resume=true \
